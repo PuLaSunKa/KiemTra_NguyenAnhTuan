@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ĐĂNG NHẬP</h2>
+<h4 style="color:red; text-align:center; font-style:italic"> @ViewBag.Thongbao </h4>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <h4>Mã sinh viên</h4>            
+    @Html.TextBox("txtMaSV")
+    @ViewData["Loi1"]  
+    <br />
+    <br />
+    <input type="Submit" value="Đăng Nhập" class="btn btn-success" />
+}
+

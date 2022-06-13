@@ -1,0 +1,40 @@
+﻿@using KiemTra_NguyenAnhTuan.Models
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2 style="text-align:center">THÔNG TIN ĐĂNG KÝ HỌC PHẦN</h2>
+<table align="center" border="1">
+    <tr style="text-align:center; font-weight:bold">
+        <td>  Mã học phần </td>
+        <td> Tên học phần </td>
+        <td> Số tín chỉ </td>        
+        <td width="70"> </</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr style="text-align:center; font-weight:bold">
+            <td> @item.sMahocphan </td>
+            <td> @item.sTenhocphan</td>
+            <td> @item.iSotinchi</td>
+            @using (Html.BeginForm("CapNhatGioHang", "DangKy", new { id = item.sMahocphan }))
+            {           
+                <td width="70"> <a href="@Url.Action("XoaGioHang", "DangKy", new { id = item.sMahocphan })"> Xóa  </a> </td>
+            }
+        </tr>
+    }
+    <tr style="font-weight: bold; text-align:right; color:red">
+        <td colspan="5"> Số học phần: @ViewBag.TongSoLuong </td>      
+    </tr>
+    <tr style="font-weight: bold; text-align:right; color:red">
+        <td colspan="9"><a href="@Url.Action("XoaTatCaGioHang","DangKy")"> Xóa đăng ký </a> </td>
+    </tr>
+    <tr style="font-weight: bold; text-align:center; color:red">
+        <td colspan="9"> <a href="@Url.Action("LuuDangKy","Dangky")"> Lưu thông tin  </a></td>
+    </tr>
+</table>
+
+
+
